@@ -659,8 +659,10 @@ const StoryPage = ({ level }) => {
         const prompt = `「${level ? level.title : 'ランダム'}」をテーマにした、英語学習者向けの短い物語を創作してください。物語には、必ず以下の単語を自然な形で含めてください: ${selectedKeywords.join(', ')}。物語は150語程度の英語で記述し、物語の本文のみを返してください。`;
 
         try {
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${import.meta.env.VITE_GEMINI_API_KEY}`, {
-                method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: prompt }] }] })
+            const response = await fetch(`/.netlify/functions/generate-story`, {
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json' }, 
+                body: JSON.stringify({ prompt: prompt })
             });
             if (!response.ok) throw new Error('Text generation failed');
             const result = await response.json();
