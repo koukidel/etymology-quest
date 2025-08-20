@@ -22,12 +22,21 @@ const CORE_ROOTS = [
 ];
 
 const PREFIXES = [
-  { id: "tele-", label: "tele-", meaning: "遠い", lang: "ギリシャ語" }, { id: "trans-", label: "trans-", meaning: "横切って", lang: "ラテン語" },
-  { id: "in-", label: "in-", meaning: "中に", lang: "ラテン語" }, { id: "in-neg", label: "in-", meaning: "〜でない(否定)", lang: "ラテン語" },
-  { id: "re-", label: "re-", meaning: "再び", lang: "ラテン語" }, { id: "pre-", label: "pre-", meaning: "前に", lang: "ラテン語" },
-  { id: "sub-", label: "sub-", meaning: "下に", lang: "ラテン語" }, { id: "de-", label: "de-", meaning: "下に、離れて", lang: "ラテン語" },
-  { id: "con-", label: "con-", meaning: "共に", lang: "ラテン語" }, { id: "pro-", label: "pro-", meaning: "前へ", lang: "ラテン語" },
+  { id: "ad-", label: "ad-", meaning: "〜の方へ", lang: "ラテン語" },
+  { id: "con-", label: "con-", meaning: "共に", lang: "ラテン語" },
+  { id: "de-", label: "de-", meaning: "下に、離れて", lang: "ラテン語" },
+  { id: "dis-", label: "dis-", meaning: "離れて", lang: "ラテン語" },
   { id: "ex-", label: "ex-", meaning: "外に", lang: "ラテン語" },
+  { id: "in-", label: "in-", meaning: "中に", lang: "ラテン語" },
+  { id: "in-neg", label: "in-", meaning: "〜でない(否定)", lang: "ラテン語" },
+  { id: "per-", label: "per-", meaning: "通り抜けて", lang: "ラテン語" },
+  { id: "pre-", label: "pre-", meaning: "前に", lang: "ラテン語" },
+  { id: "pro-", label: "pro-", meaning: "前へ", lang: "ラテン語" },
+  { id: "re-", label: "re-", meaning: "再び", lang: "ラテン語" },
+  { id: "sub-", label: "sub-", meaning: "下に", lang: "ラテン語" },
+  { id: "tele-", label: "tele-", meaning: "遠い", lang: "ギリシャ語" },
+  { id: "trans-", label: "trans-", meaning: "横切って", lang: "ラテン語" },
+  { id: "un-", label: "un-", meaning: "〜でない(否定)", lang: "ゲルマン語" },
 ];
 const ROOTS = [
   { id: "port", label: "port", meaning: "運ぶ", lang: "ラテン語" }, { id: "spect", label: "spect", meaning: "見る", lang: "ラテン語" },
@@ -41,36 +50,36 @@ const SUFFIXES = [
   { id: "-ion", label: "-ion", meaning: "こと(名詞化)", lang: "ラテン語" }, { id: "-or", label: "-or", meaning: "〜する人", lang: "ラテン語" },
 ];
 const WORD_BANK_JA = [
-  { word: "transport", parts: ["trans-", "port"], gloss: "横切って運ぶ", meaning: "輸送する", semantic: { parent: "移動" } },
-  { word: "report", parts: ["re-", "port"], gloss: "後ろへ運ぶ", meaning: "報告する", semantic: { parent: "報告" } },
-  { word: "portable", parts: ["port", "-able"], gloss: "運ぶことができる", meaning: "携帯用の", semantic: { parent: "性質" } },
-  { word: "export", parts: ["ex-", "port"], gloss: "外に運ぶ", meaning: "輸出する", semantic: { parent: "貿易" } },
-  { word: "import", parts: ["in-", "port"], gloss: "中に運ぶ", meaning: "輸入する", semantic: { parent: "貿易" } },
-  { word: "inspect", parts: ["in-", "spect"], gloss: "中を見る", meaning: "検査する", semantic: { parent: "調査" } },
-  { word: "respect", parts: ["re-", "spect"], gloss: "再び見る", meaning: "尊敬する", semantic: { parent: "尊敬" } },
-  { word: "prospect", parts: ["pro-", "spect"], gloss: "前を見る", meaning: "見込み", semantic: { parent: "予測" } },
-  { word: "spectacle", parts: ["spect", "-acle"], gloss: "見るもの", meaning: "光景", semantic: { parent: "出来事" } },
-  { word: "submit", parts: ["sub-", "mit"], gloss: "下に送る", meaning: "提出する", semantic: { parent: "行動" } },
-  { word: "transmit", parts: ["trans-", "mit"], gloss: "横切って送る", meaning: "送信する", semantic: { parent: "通信" } },
-  { word: "mission", parts: ["mis", "-ion"], gloss: "送られたもの", meaning: "任務", semantic: { parent: "仕事" } },
-  { word: "permit", parts: ["per-", "mit"], gloss: "通り抜け送る", meaning: "許可する", semantic: { parent: "承認" } },
-  { word: "predict", parts: ["pre-", "dict"], gloss: "前に言う", meaning: "予言する", semantic: { parent: "思考" } },
-  { word: "review", parts: ["re-", "vis"], gloss: "再び見る", meaning: "見直す", semantic: { parent: "評価" } },
-  { word: "telephone", parts: ["tele-", "phon"], gloss: "遠くの音", meaning: "電話", semantic: { parent: "通信" } },
-  { word: "vision", parts: ["vis", "-ion"], gloss: "見ること", meaning: "視力、未来像", semantic: { parent: "感覚" } },
-  { word: "invisible", parts: ["in-neg", "vis", "-able"], gloss: "見ることができない", meaning: "見えない", semantic: { parent: "状態" } },
-  { word: "progress", parts: ["pro-", "gress"], gloss: "前に進む", meaning: "進歩", semantic: { parent: "発展" } },
-  { word: "describe", parts: ["de-", "scrib"], gloss: "書き下ろす", meaning: "描写する", semantic: { parent: "表現" } },
-  { word: "compose", parts: ["con-", "pon"], gloss: "共に置く", meaning: "構成する", semantic: { parent: "創造" } },
-  { word: "produce", parts: ["pro-", "duc"], gloss: "前へ導き出す", meaning: "生産する", semantic: { parent: "生産" } },
+  { word: "transport", parts: ["trans-", "port"], gloss: "横切って運ぶ", meaning: "輸送する", semantic: { parent: "移動" }, breakdown: "trans (横切って) / port (運ぶ)" },
+  { word: "report", parts: ["re-", "port"], gloss: "後ろへ運ぶ", meaning: "報告する", semantic: { parent: "報告" }, breakdown: "re (再び) / port (運ぶ)" },
+  { word: "portable", parts: ["port", "-able"], gloss: "運ぶことができる", meaning: "携帯用の", semantic: { parent: "性質" }, breakdown: "port (運ぶ) / -able (できる)" },
+  { word: "export", parts: ["ex-", "port"], gloss: "外に運ぶ", meaning: "輸出する", semantic: { parent: "貿易" }, breakdown: "ex (外に) / port (運ぶ)" },
+  { word: "import", parts: ["in-", "port"], gloss: "中に運ぶ", meaning: "輸入する", semantic: { parent: "貿易" }, breakdown: "in (中に) / port (運ぶ)" },
+  { word: "inspect", parts: ["in-", "spect"], gloss: "中を見る", meaning: "検査する", semantic: { parent: "調査" }, breakdown: "in (中に) / spect (見る)" },
+  { word: "respect", parts: ["re-", "spect"], gloss: "再び見る", meaning: "尊敬する", semantic: { parent: "尊敬" }, breakdown: "re (再び) / spect (見る)" },
+  { word: "prospect", parts: ["pro-", "spect"], gloss: "前を見る", meaning: "見込み", semantic: { parent: "予測" }, breakdown: "pro (前に) / spect (見る)" },
+  { word: "spectacle", parts: ["spect", "-acle"], gloss: "見るもの", meaning: "光景", semantic: { parent: "出来事" }, breakdown: "spect (見る) / -acle (もの)" },
+  { word: "submit", parts: ["sub-", "mit"], gloss: "下に送る", meaning: "提出する", semantic: { parent: "行動" }, breakdown: "sub (下に) / mit (送る)" },
+  { word: "transmit", parts: ["trans-", "mit"], gloss: "横切って送る", meaning: "送信する", semantic: { parent: "通信" }, breakdown: "trans (横切って) / mit (送る)" },
+  { word: "mission", parts: ["mis", "-ion"], gloss: "送られたもの", meaning: "任務", semantic: { parent: "仕事" }, breakdown: "mis (送る) / -ion (こと)" },
+  { word: "permit", parts: ["per-", "mit"], gloss: "通り抜け送る", meaning: "許可する", semantic: { parent: "承認" }, breakdown: "per (通り抜けて) / mit (送る)" },
+  { word: "predict", parts: ["pre-", "dict"], gloss: "前に言う", meaning: "予言する", semantic: { parent: "思考" }, breakdown: "pre (前に) / dict (言う)" },
+  { word: "review", parts: ["re-", "vis"], gloss: "再び見る", meaning: "見直す", semantic: { parent: "評価" }, breakdown: "re (再び) / vis (見る)" },
+  { word: "telephone", parts: ["tele-", "phon"], gloss: "遠くの音", meaning: "電話", semantic: { parent: "通信" }, breakdown: "tele (遠い) / phon (音)" },
+  { word: "vision", parts: ["vis", "-ion"], gloss: "見ること", meaning: "視力、未来像", semantic: { parent: "感覚" }, breakdown: "vis (見る) / -ion (こと)" },
+  { word: "invisible", parts: ["in-neg", "vis", "-able"], gloss: "見ることができない", meaning: "見えない", semantic: { parent: "状態" }, breakdown: "in (否定) / vis (見る) / -able (できる)" },
+  { word: "progress", parts: ["pro-", "gress"], gloss: "前に進む", meaning: "進歩", semantic: { parent: "発展" }, breakdown: "pro (前に) / gress (進む)" },
+  { word: "describe", parts: ["de-", "scrib"], gloss: "書き下ろす", meaning: "描写する", semantic: { parent: "表現" }, breakdown: "de (下に) / scrib (書く)" },
+  { word: "compose", parts: ["con-", "pon"], gloss: "共に置く", meaning: "構成する", semantic: { parent: "創造" }, breakdown: "con (共に) / pon (置く)" },
+  { word: "produce", parts: ["pro-", "duc"], gloss: "前へ導き出す", meaning: "生産する", semantic: { parent: "生産" }, breakdown: "pro (前に) / duc (導く)" },
 ];
 const LEARNING_PATH_JA = [
-    { id: 'level1', title: '「運ぶ」の仲間', icon: 'port', words: ['transport', 'report', 'portable', 'export', 'import'], unlocks: 'level2' },
-    { id: 'level2', title: '「見る」の仲間', icon: 'spect', words: ['inspect', 'respect', 'prospect', 'spectacle'], unlocks: 'level3' },
-    { id: 'level3', title: '「送る」の仲間', icon: 'mit', words: ['submit', 'transmit', 'mission', 'permit'], unlocks: 'level4' },
-    { id: 'level4', title: '「言う」と「見る(vis)」', icon: 'dict', words: ['predict', 'review', 'vision', 'invisible'], unlocks: 'level5' },
-    { id: 'level5', title: '「書く」と「進む」', icon: 'scrib', words: ['describe', 'progress'], unlocks: 'level6' },
-    { id: 'level6', title: '「置く」と「導く」', icon: 'pon', words: ['compose', 'produce'], unlocks: null },
+    { id: 'level1', title: '「運ぶ」の仲間', icon: 'port', words: ['transport', 'report', 'portable', 'export', 'import'], unlocks: 'level2', rootMeaning: '運ぶ', exampleBreakdown: 'trans / port' },
+    { id: 'level2', title: '「見る」の仲間', icon: 'spect', words: ['inspect', 'respect', 'prospect', 'spectacle'], unlocks: 'level3', rootMeaning: '見る', exampleBreakdown: 'in / spect' },
+    { id: 'level3', title: '「送る」の仲間', icon: 'mit', words: ['submit', 'transmit', 'mission', 'permit'], unlocks: 'level4', rootMeaning: '送る', exampleBreakdown: 'sub / mit' },
+    { id: 'level4', title: '「言う」と「見る(vis)」', icon: 'dict/vis', words: ['predict', 'review', 'vision', 'invisible'], unlocks: 'level5', rootMeaning: '言う/見る', exampleBreakdown: 'pre / dict' },
+    { id: 'level5', title: '「書く」と「進む」', icon: 'scrib/gress', words: ['describe', 'progress'], unlocks: 'level6', rootMeaning: '書く/進む', exampleBreakdown: 'de / scribe' },
+    { id: 'level6', title: '「置く」と「導く」', icon: 'pon/duc', words: ['compose', 'produce'], unlocks: null, rootMeaning: '置く/導く', exampleBreakdown: 'com / pose' },
 ];
 const ACHIEVEMENTS_JA = {
     'first_step': { title: "最初の一歩", description: "最初の1問に正解する", icon: Star, condition: (stats) => stats.totalScore >= 1 },
@@ -325,7 +334,13 @@ const PathPage = ({ stats, onLevelSelect, playClick }) => {
                                     </div>
                                     <div>
                                         <h3 className="font-bold text-slate-800">{level.title}</h3>
-                                        <p className="text-sm text-slate-500">{language === 'ja' ? '語根' : 'Root'}: {level.icon}</p>
+                                        {language === 'ja' && level.rootMeaning ? (
+                                            <p className="text-sm text-slate-600">
+                                                <span className="font-semibold">{level.icon}</span> ({level.rootMeaning})
+                                            </p>
+                                        ) : (
+                                            <p className="text-sm text-slate-500">Root: {level.icon}</p>
+                                        )}
                                     </div>
                                 </motion.button>
                             </motion.div>
@@ -351,7 +366,7 @@ const LessonPage = ({ level, onComplete, onCorrectAnswer, onIncorrectAnswer, onE
         const distractors = shuffle(WORD_BANK[language].filter(w => w.word !== targetWord.word)).slice(0, 2).map(w => w.word);
         const options = shuffle([targetWord.word, ...distractors]);
         const prompt = language === 'ja' ? `「${targetWord.meaning}」を意味する単語は？` : `What word means "${targetWord.meaning}"?`;
-        setQuiz({ prompt, options, answer: targetWord.word, explanation: `語源: ${targetWord.gloss}` });
+        setQuiz({ prompt, options, answer: targetWord.word, explanation: `語源: ${targetWord.breakdown || targetWord.gloss}` });
     };
 
     useEffect(() => {
@@ -484,7 +499,14 @@ const DictionaryPage = ({ playClick }) => {
   const { language, t } = useLanguage();
   const [searchTerm, setSearchTerm] = useState("");
   const currentParts = useMemo(() => [...ALL_PARTS[language].prefixes, ...ALL_PARTS[language].roots, ...ALL_PARTS[language].suffixes], [language]);
-  const filteredParts = useMemo(() => searchTerm ? currentParts.filter(p => p.label.toLowerCase().includes(searchTerm.toLowerCase()) || p.meaning.toLowerCase().includes(searchTerm.toLowerCase())) : [], [searchTerm, currentParts]);
+  const filteredParts = useMemo(() => {
+    if (searchTerm) {
+        return currentParts.filter(p => p.label.toLowerCase().includes(searchTerm.toLowerCase()) || p.meaning.toLowerCase().includes(searchTerm.toLowerCase()));
+    }
+    // 検索語がない場合は、全ての接頭辞を表示する
+    return ALL_PARTS[language].prefixes;
+}, [searchTerm, currentParts, language]);
+
   return (
     <motion.div variants={pageVariants} transition={pageTransition} initial="initial" animate="in" exit="out" className="p-4 h-full">
       <Card className="flex flex-col h-full">
